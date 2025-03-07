@@ -1,0 +1,129 @@
+﻿@{
+    ViewData["Title"] = "Instalação";
+}
+
+<section id="initial">
+    <div class="container-internal text-center install">
+        <figure></figure>
+        <h1>Instalando o Arch Linux</h1>
+        <p>Um guia passo a passo simples para ajudá-lo a instalar o Arch Linux como seu sistema operacional.</p>
+    </div>
+</section>
+
+<section id="you-need">
+    <div class="container text-center">
+        <div class="mb-2">
+            <h2>O que você precisa...</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div>
+                    <figure>
+                        <img src="~/css/img/requirements.png" id="computer-instalacao" />
+                    </figure>
+                    <p>Um <strong>computador</strong> capaz de rodar o Arch Linux.</p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <figure>
+                        <img src="~/css/img/usb.png" id="usb-instalacao" />
+                    </figure>
+                    <p>Um <strong>dispositivo USB</strong> com capacidade para o Arch Linux:</p>
+                    <p>Sistema: <strong>2GB</strong></p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <figure>
+                        <img src="~/css/img/backup.png" id="backup-instalacao" />
+                    </figure>
+                    <p>Uma unidade de <strong>armazenamento externo</strong> ou <strong>armazenamento em nuvem.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="Download">
+    <div class="container text-center" id="baixar">
+        <h2>Baixando Arch Linux</h2>
+        <p>Caso ainda não tenha baixado sua cópia do Arch Linux, você precisa baixa-la na página de <a asp-controller="Download" asp-action="Index">Download</a> para continuar.</p>
+    </div>
+
+    <hr />
+
+    <div class="container space-hr">
+        <h2 class="text-center">Criando instalação no Drive</h2>
+        <div class="text-center">
+            <p>Para criar uma isntalação do Arch Linux, você precisará de sua unidade flash e de um aplicativo chamado balenarEtcher.</p>
+            <a target="_blank" href="https://www.balena.io/etcher/"><button class="btn-info-internal">Baixar balenaEtcher</button></a>
+        </div>
+        <div>
+            <ol>
+                <li class="li-help">Insira o dispositivo USB no seu computador.</li>
+                <li class="li-help">
+                    Abra o aplicativo balenaEtcher e aperte em "Flash from file" para escolher o arquivo ".iso" do Arch Linux que você possui.<br />
+                    <img src="~/css/img/balenaEtcher-1.png" class="shadow rounded" />
+                </li>
+                <li class="li-help">
+                    Aperte em "Select target" e escolha o dispositivo USB no qual deseja utilizar.<br />
+                    <img src="~/css/img/balenaEtcher-2.png" class="shadow rounded" />
+                </li>
+                <li class="li-help">
+                    Aperte em "Flash!" para começar a instalação do Arch Linux no dispositivo USB.<br />
+                    <img src="~/css/img/balenaEtcher-3.png" class="shadow rounded" />
+                </li>
+                <li class="li-help">Após alguns minutos, o dispositivos USB está pronto para iniciar a instalação do Arch Linux.</li>
+            </ol>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container space-hr">
+        <h2 class="text-center">Inicializando a partir do dispositivo USB.</h2>
+        <div>
+            <p>Para instalar o Arch Linux, você deve inicializar o computador com a unidade USB na qual instalou o mesmo.</p>
+        </div>
+        <div>
+            <ol>
+                <li class="li-help">Certifique-se que o dispostivo USB com a instalação do Arch Lnux está conectado no computador.</li>
+                <li class="li-help">
+                    Ligue o computador.
+                    <ul class="li-help type">
+                        <li class="li-help">
+                            <strong>No computador.</strong> Após a inicialização, aperte repetidamente a tecla indeicada para acessar o menu de inicialização.
+                            Caso haja dúvida de qual tecla apertar, geralmente é <kbd>ESC</kbd>, <kbd>Del</kbd> ou <kbd>F12</kbd>. No menu de inicialização, selecione a opção
+                            com "USB" no título para inicializar a partir da unidade de instalação.
+                        </li>
+                        <li class="li-help">
+                            <strong>No mac.</strong> Após a inicialização, aperte e segure a tecla <kbd>"option"</kbd>. Selecione a unidade de instalação USB como unidade de
+                            inicialização. Às vezes, a unidade de instalação pode ser identificada incorretamente como "Windows", o que é normal.
+                        </li>
+                    </ul>
+                </li>
+                <li class="li-help">
+                    Agora você deve ver o menu de boas-vindas do Arch Linux. Utilize as teclas <kbd>↑</kbd> <kbd>↓</kbd> para navegar no menu e pressione <kbd>Enter</kbd> para confirmar a opção.<br />
+                    <img src="~/css/img/Menu-archlinux.jpeg" class="shadow rounded" />
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container space-hr">
+        <h2 class="text-center">Instalando o Arch Linux.</h2>
+        <div>
+            <p class="text-center">Conclua a instalação do seu Arch Linux assistindo o video.</p>
+        </div>
+
+        <div class="d-flex justify-content-center" id="container-video">
+            <iframe src="https://player.vimeo.com/video/565819484" frameborder="0" allowfullscreen></iframe>
+            
+            <img src="~/css/img/video-image.png" class="img-100" />
+        </div>
+    </div>
+</section>
