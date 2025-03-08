@@ -2,7 +2,7 @@
 
 # Esta fase é usada durante a execução no VS no modo rápido (Padrão para a configuração de Depuração)
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-WORKDIR /app
+WORKDIR /src
 EXPOSE 80
 EXPOSE 443
 
@@ -14,15 +14,15 @@ WORKDIR /src
 COPY ["ArchLinux.csproj", "."]
 RUN dotnet restore "./ArchLinux.csproj"
 COPY . .
-RUN dotnet build "./ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /src/build
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /src/publish /p:UseAppHost=false
 
 # Esta fase é usada na produção ou quando executada no VS no modo normal (padrão quando não está usando a configuração de Depuração)
 FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+WORKDIR /src
+COPY --from=publish /src/publish .
 ENTRYPOINT ["dotnet", "ArchLinux.dll"]
