@@ -10,8 +10,8 @@ EXPOSE 443
 # Esta fase é usada para compilar o projeto de serviço
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["/ArchLinux/ArchLinux.csproj", "/ArchLinux"]
+WORKDIR /arch-linux
+COPY ["/src/ArchLinux/ArchLinux.csproj", "/src/ArchLinux"]
 RUN dotnet restore "./ArchLinux.csproj"
 COPY . .
 WORKDIR "/src/ArchLinux"
