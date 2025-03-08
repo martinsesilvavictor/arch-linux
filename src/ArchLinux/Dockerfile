@@ -11,7 +11,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["/ArchLinux/ArchLinux.csproj", "."]
+COPY ["/ArchLinux/ArchLinux.csproj", "/ArchLinux"]
 RUN dotnet restore "./ArchLinux.csproj"
 COPY . .
 WORKDIR "/src/ArchLinux"
