@@ -14,7 +14,6 @@ WORKDIR /src
 COPY ["ArchLinux.csproj", "."]
 RUN dotnet restore "./ArchLinux.csproj"
 COPY . .
-WORKDIR "/src/."
 RUN dotnet build "./ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
