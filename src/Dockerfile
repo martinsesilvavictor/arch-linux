@@ -10,7 +10,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /ARCHLINUX
-COPY . .
+COPY ./ArchLinux ./ArchLinux
+COPY ArchLinux.sln .
 RUN dotnet restore
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
