@@ -24,27 +24,3 @@ FROM base AS final
 WORKDIR /src
 COPY --from=publish /src/publish .
 ENTRYPOINT ["dotnet", "ArchLinux.dll"]
-
-
-#FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
-#WORKDIR /App
-#
-#COPY ./src ./src
-#COPY ./test ./test
-#COPY AppTemplate.sln .
-#
-#RUN dotnet restore
-#RUN dotnet publish -c Release -o out
-#
-#FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-#
-##RUN addgroup nonroot \
-    ##&& adduser dotnet \
-    ##&& usermod -aG nonroot dotnet
-#
-##USER nonroot
-#
-#WORKDIR /App
-#EXPOSE 8080
-#COPY --from=build-env /App/out .
-#ENTRYPOINT ["dotnet", "AppTemplate.Api.dll"]
