@@ -12,7 +12,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /ARCHLINUX
 COPY . .
 #COPY ArchLinux.sln .
-RUN dotnet restore
+RUN dotnet restore "ArchLinux/ArchLinux.csproj"
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
 FROM build AS publish
