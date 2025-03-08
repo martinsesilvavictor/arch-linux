@@ -12,9 +12,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /arch-linux
 COPY ["/src/ArchLinux/ArchLinux.csproj", "/src/ArchLinux"]
-RUN dotnet restore "/src/ArchLinux/ArchLinux.csproj"
+RUN dotnet restore "/arch-linux/src/ArchLinux/ArchLinux.csproj"
 COPY . .
-WORKDIR "arch-linux/src/ArchLinux"
+WORKDIR "/src/ArchLinux"
 RUN dotnet build "ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /src/build
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
