@@ -11,10 +11,11 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["ArchLinux.csproj", "."]
+COPY ["ArchLinux/ArchLinux.csproj", "."]
 RUN dotnet restore "./ArchLinux.csproj"
 COPY . .
-RUN dotnet build "./ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /src/build
+WORKDIR "/src/ArchLinux"
+RUN dotnet build "ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /src/build
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
 FROM build AS publish
