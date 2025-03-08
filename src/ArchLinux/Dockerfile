@@ -6,21 +6,17 @@ WORKDIR /src
 EXPOSE 80
 EXPOSE 443
 
-
 # Esta fase é usada para compilar o projeto de serviço
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /arch-linux
-COPY ["src/ArchLinux/ArchLinux.csproj", "src/ArchLinux"]
-RUN dotnet restore "src/ArchLinux/ArchLinux.csproj"
+WORKDIR /ARCHLINUX
 COPY . .
-WORKDIR "/src/ArchLinux"
-RUN dotnet build "ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /src/build
+RUN dotnet restore
 
 # Esta fase é usada para publicar o projeto de serviço a ser copiado para a fase final
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./ArchLinux.csproj" -c $BUILD_CONFIGURATION -o /src/publish /p:UseAppHost=false
+RUN dotnet publish -c $BUILD_CONFIGURATION -o /src/publish /p:UseAppHost=false
 
 # Esta fase é usada na produção ou quando executada no VS no modo normal (padrão quando não está usando a configuração de Depuração)
 FROM base AS final
